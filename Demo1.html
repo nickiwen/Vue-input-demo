@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 
+
+        参考地址：https://www.cnblogs.com/zhuzhenwei918/p/7309604.html
+
+        什么是数据双向绑定？ 
+            vue是一个mvvm框架，即数据双向绑定，即当数据发生变化的时候，视图也就发生变化，
+            当视图发生变化的时候，数据也会跟着同步变化
+        为什么要实现数据的双向绑定？
+            在vue中，如果使用vuex，实际上数据还是单向的，之所以说是数据双向绑定，这是用
+            的UI控件来说，对于我们处理表单，vue的双向数据绑定用起来就特别舒服了。即两者
+            并不互斥， 在全局性数据流使用单项，方便跟踪； 局部性数据流使用双向，简单易操作。
+
+        1.访问器属性
+            Object.defineProperty()函数可以定义对象的属性相关描述符， 其中的set和get
+            函数对于完成数据双向绑定起到了至关重要的作用，下面，我们看看这个函数的基本使用方式。
+            
+     -->
+
+    <script>
+
+        var obj = {
+            foo: 'foo'
+        }
+
+        Object.defineProperty(obj, 'foo', {
+            get: function () {
+                console.log('将要读取obj.foo属性');
+            },
+            set: function (newVal) {
+                console.log('当前值为', newVal);
+            }
+        });
+
+        obj.foo; // 将要读取obj.foo属性
+        obj.foo = 'name'; // 当前值为 name
+
+        // 可以看到，get即为我们访问属性时调用，set为我们设置属性值时调用。
+    </script>
+
+</body>
+
+</html>

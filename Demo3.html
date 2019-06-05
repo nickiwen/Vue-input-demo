@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 上面我们只是实现了一个最简单的数据双向绑定，而我们真正希望实现的时下面这种方式： -->
+
+    <div id="app">
+        <input type="text" v-model="text">
+        {{ text }}
+    </div>
+
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                text: 'hello world'
+            }
+        });
+    </script>
+
+    <!-- 
+        即和vue一样的方式来实现数据的双向绑定。那么，我们可以把整个实现过程分为下面几步： 
+        1.输入框以及文本节点与 data 中的数据绑定
+        2.输入框内容变化时，data 中的数据同步变化。即 view => model 的变化。
+        3.data 中的数据变化时，文本节点的内容同步变化。即 model => view 的变化。
+     -->
+
+</body>
+
+</html>

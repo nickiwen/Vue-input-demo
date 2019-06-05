@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 
+        DocumentFragment
+        我们还需要使用到 DocumentFragment 文档片段，可以把它看做一个容器，如下所示：
+
+
+
+     -->
+
+    <div id="app">
+        <input type="text" id="a">
+        <span id="b"></span>
+    </div>
+
+    <script>
+        var dom = nodeToFragment(document.getElementById('app'));
+        console.log(dom);
+
+        function nodeToFragment(node) {
+            var flag = document.createDocumentFragment();
+            var child;
+            while (child = node.firstChild) {
+                flag.appendChild(child);
+            }
+            return flag;
+        }
+
+        document.getElementById('app').appendChild(dom);
+    </script>
+
+    <!-- 
+        使用文档片段的好处在于：在文档片段上进行操作DOM，而不会影响到真实的DOM，操作完成之后，
+        我们就可以添加到真实DOM上，这样的效率比直接在正式DOM上修改要高很多 。
+　　    
+        vue进行编译时，就是将挂载目标的所有子节点劫持到DocumentFragment中，经过一番处理之后，
+        再将DocumentFragment整体返回插入挂载目标。
+
+        即首先获取到div，然后通过documentFragment劫持，接着再把这个文档片段添加到div上去。
+     -->
+
+</body>
+
+</html>
